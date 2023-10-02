@@ -1,0 +1,75 @@
+@import "./base.css";
+
+#app {
+  max-width: 1980px;
+  margin: 0 auto;
+  height: 100vh;
+  font-weight: normal;
+  background-color: #fff;
+}
+
+a,
+.green {
+  text-decoration: none;
+  color: hsla(160, 100%, 37%, 1);
+  transition: 0.4s;
+}
+
+header {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  height: 15%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px; /* Adiciona margem inferior ao cabeçalho */
+}
+
+header h1 {
+  margin: 0;
+  font-size: 36px;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+header ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+header li {
+  display: inline;
+  margin-right: 20px;
+}
+
+header a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+}
+
+.Resuminho {
+  background-image: url('car-hero.jpg');
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  color: black;
+  padding: 0;
+  margin: 0; /* Remove margem */
+}
+
+.hero h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+main {
+  height: 70%;
+  background-color: #fff;
+}
