@@ -1,4 +1,7 @@
-import axios from "axios"
+import axios from "axios";
 
-axios.defaults.baseURL = "http://localhost:8000"
-// axios.defaults.baseURL = "https://livraria-drf.herokuapp.com"
+const api = axios.create({
+  baseURL: "https://exercicio-garagem-django-1-dev-qrxg.1.us-1.fl0.io/api/",
+});
+
+export default api;

@@ -1,8 +1,8 @@
-import axios from 'axios';
+import api from '../plugins/axios'
 
 export default class VeiculosApi {
   async buscarTodosOsVeiculos() {
-    const { data } = await axios.get('/api/garagem/veiculos/');
+    const { data } = await api.get('/veiculos/');
     return data;
   }
 }

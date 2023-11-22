@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>Carros em  Destaque</h2>
+    <h1>Carros em Destaque</h1>
     <section class="cards">
       <div class="card" v-for="index in 12" :key="index">
         <div class="card-content">
@@ -8,6 +8,7 @@
           <div class="card-placeholder"></div>
           <div class="card-placeholder"></div>
           <div class="card-placeholder"></div>
+          <p class="card-description">{{ generateLoremDescription() }}</p>
         </div>
       </div>
     </section>
@@ -17,17 +18,20 @@
 <script>
 export default {
   data() {
-    return {
-      // Se necessário, você pode adicionar dados aqui para preencher os cards
-    };
+    return {};
+  },
+  methods: {
+    generateLoremDescription() {
+      // Função para gerar descrição lorem simples
+      const loremIpsum =
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
+      return loremIpsum;
+    },
   },
 };
 </script>
 
 <style scoped>
-/* Estilos globais, se necessário */
-
-/* Estilos para os Cards */
 .cards {
   display: flex;
   flex-wrap: wrap;
@@ -55,5 +59,13 @@ export default {
 
 .card-placeholder:last-child {
   margin-bottom: 0;
+}
+
+.card-description {
+  margin-top: 10px;
+  color: #555;
+}
+h1 {
+  color: black;
 }
 </style>

@@ -1,20 +1,27 @@
 <template>
   <div>
-    <h1>Estoque de Veículos</h1>
+    <h1 style="color: black">Estoque de Veículos</h1>
     <hr />
     <div class="search-bar" @click="enableInput">
       <input
         type="text"
         placeholder="Clique para digitar"
-        :disabled="!inputEnabled"
         v-model="searchTerm"
         @input="search"
       />
     </div>
     <div class="veiculos-list">
-      <div v-for="veiculo in filteredVeiculos" :key="veiculo.id" class="veiculo-card">
+      <div
+        v-for="veiculo in filteredVeiculos"
+        :key="veiculo.id"
+        class="veiculo-card"
+      >
         <div class="veiculo-image">
-          <img :src="veiculo.image" alt="Imagem do Veículo" class="veiculo-img" />
+          <img
+            :src="veiculo.image"
+            alt="Imagem do Veículo"
+            class="veiculo-img"
+          />
         </div>
         <div class="veiculo-details">
           <h3 class="veiculo-name">{{ veiculo.name }}</h3>
@@ -59,14 +66,12 @@ export default {
     enableInput() {
       this.inputEnabled = true;
     },
-    search() {
-    },
+    search() {},
   },
 };
 </script>
 
 <style scoped>
-
 .veiculos-list {
   display: flex;
   flex-wrap: wrap;
@@ -80,14 +85,14 @@ export default {
   width: calc(33.33% - 20px);
   box-sizing: border-box;
   background-color: #f9f9f9;
-  height: 400px; 
+  height: 400px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
 .veiculo-image {
-  height: 200px; 
+  height: 200px;
   overflow: hidden;
 }
 
@@ -95,11 +100,12 @@ export default {
   max-width: 100%;
   height: auto;
   width: 100%;
-  object-fit: cover; 
+  object-fit: cover;
 }
 
 .veiculo-details {
   text-align: center;
+  color: black;
 }
 
 .veiculo-name {
@@ -118,5 +124,8 @@ input[type="text"] {
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
+}
+p{
+  color: black;
 }
 </style>
