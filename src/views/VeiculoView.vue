@@ -11,17 +11,9 @@
       />
     </div>
     <div class="veiculos-list">
-      <div
-        v-for="veiculo in filteredVeiculos"
-        :key="veiculo.id"
-        class="veiculo-card"
-      >
+      <div v-for="veiculo in filteredVeiculos" :key="veiculo.id" class="veiculo-card">
         <div class="veiculo-image">
-          <img
-            :src="veiculo.image"
-            alt="Imagem do Veículo"
-            class="veiculo-img"
-          />
+          <img :src="veiculo.image" alt="Imagem do Veículo" class="veiculo-img" />
         </div>
         <div class="veiculo-details">
           <h3 class="veiculo-name">{{ veiculo.name }}</h3>
@@ -36,8 +28,7 @@
 </template>
 
 <script>
-import VeiculosApi from "@/api/veiculo";
-const veiculosApi = new VeiculosApi();
+import axios from "axios";
 
 export default {
   data() {
@@ -47,26 +38,29 @@ export default {
       searchTerm: "",
     };
   },
-  async created() {
-    try {
-      this.veiculos = await veiculosApi.buscarTodosOsVeiculos();
-    } catch (error) {
-      console.error("Erro ao buscar veículos:", error);
-    }
-  },
-  computed: {
-    filteredVeiculos() {
-      const term = this.searchTerm.toLowerCase();
-      return this.veiculos.filter((veiculo) =>
-        veiculo.name.toLowerCase().includes(term)
-      );
-    },
+  created() {
+    this.fetchVeiculos();
   },
   methods: {
+    async fetchVeiculos() {
+      try {
+        const { data } = await axios.get('http://127.0.0.1:8000/api/veiculos/');
+        this.veiculos = data;
+        console.log('Dados da API:', this.veiculos);
+      } catch (error) {
+        console.error('Erro ao buscar veículos:', error.message);
+      }
+    },
     enableInput() {
       this.inputEnabled = true;
     },
     search() {},
+  },
+  computed: {
+    filteredVeiculos() {
+      const term = this.searchTerm.toLowerCase();
+      return this.veiculos.filter((veiculo) => veiculo.name.toLowerCase().includes(term));
+    },
   },
 };
 </script>
@@ -125,7 +119,7 @@ input[type="text"] {
   border-radius: 4px;
   box-sizing: border-box;
 }
-p{
+p {
   color: black;
 }
 </style>
