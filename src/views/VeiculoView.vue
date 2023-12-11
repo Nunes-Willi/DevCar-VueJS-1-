@@ -28,7 +28,8 @@
 </template>
 
 <script>
-import axios from "axios";
+import VeiculosApi from "@/api/veiculo";
+const veiculosApi = new VeiculosApi();
 
 export default {
   data() {
@@ -38,29 +39,26 @@ export default {
       searchTerm: "",
     };
   },
-  created() {
-    this.fetchVeiculos();
-  },
-  methods: {
-    async fetchVeiculos() {
-      try {
-        const { data } = await axios.get('http://127.0.0.1:8000/api/veiculos/');
-        this.veiculos = data;
-        console.log('Dados da API:', this.veiculos);
-      } catch (error) {
-        console.error('Erro ao buscar veículos:', error.message);
-      }
-    },
-    enableInput() {
-      this.inputEnabled = true;
-    },
-    search() {},
+  async created() {
+    try {
+      this.veiculos = await veiculosApi.buscarTodosOsVeiculos();
+    } catch (error) {
+      console.error("Erro ao buscar veículos:", error);
+    }
   },
   computed: {
     filteredVeiculos() {
       const term = this.searchTerm.toLowerCase();
-      return this.veiculos.filter((veiculo) => veiculo.name.toLowerCase().includes(term));
+      return this.veiculos.filter((veiculo) =>
+        veiculo.name.toLowerCase().includes(term)
+      );
     },
+  },
+  methods: {
+    enableInput() {
+      this.inputEnabled = true;
+    },
+    search() {},
   },
 };
 </script>
